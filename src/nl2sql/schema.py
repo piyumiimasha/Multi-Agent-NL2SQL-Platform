@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable, Sequence
-from urllib.parse import urlparse
+from urllib.parse import quote_plus, urlparse
 
 import psycopg
 from psycopg import sql
@@ -181,7 +181,7 @@ class PostgresSchemaIntrospector:
 
 def _load_database_url(env_path: Path) -> str | None:
     if not env_path.exists():
-        return None
+        return os.getenv("SUPABASE_DATABASE_URL")
 
     values: dict[str, str] = {}
     for raw_line in env_path.read_text(encoding="utf-8").splitlines():
@@ -194,13 +194,23 @@ def _load_database_url(env_path: Path) -> str | None:
     if values.get("SUPABASE_DATABASE_URL"):
         return values["SUPABASE_DATABASE_URL"]
 
-    project_url = values.get("NEXT_PUBLIC_SUPABASE_URL")
+    if os.getenv("SUPABASE_DATABASE_URL"):
+        return os.getenv("SUPABASE_DATABASE_URL")
+
+    host = values.get("SUPABASE_DB_HOST") or ""
+    if not host:
+        project_url = values.get("NEXT_PUBLIC_SUPABASE_URL")
+        if project_url:
+            parsed = urlparse(project_url)
+            host = parsed.hostname or ""
+            if host and not host.startswith("db."):
+                host = f"db.{host}"
+
     password = values.get("SUPABASE_DB_PASSWORD")
-    if not project_url or not password:
+    if not host or not password:
         return None
 
-    parsed = urlparse(project_url)
-    host = parsed.hostname or ""
-    if host and not host.startswith("db."):
-        host = f"db.{host}"
-    return f"postgresql://postgres:{password}@{host}:5432/postgres?sslmode=require"
+    user = values.get("SUPABASE_DB_USER") or "postgres"
+    dbname = values.get("SUPABASE_DB_NAME") or "postgres"
+    port = values.get("SUPABASE_DB_PORT") or "5432"
+    return f"postgresql://{user}:{quote_plus(password)}@{host}:{port}/{dbname}?sslmode=require"

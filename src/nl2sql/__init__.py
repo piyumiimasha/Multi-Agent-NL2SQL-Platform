@@ -1,4 +1,5 @@
 from .engine import NL2SQLPromptComposer, PromptBundle
+from .validation import SQLSafetyValidator, SQLSyntaxValidator, SQLValidationGatekeeper, ValidationResult, ValidationStatus
 from .schema import ColumnInfo, ForeignKeyInfo, SchemaSnapshot, TableSchema
 
 __all__ = [
@@ -8,4 +9,9 @@ __all__ = [
     "TableSchema",
     "NL2SQLPromptComposer",
     "PromptBundle",
+    "ValidationResult",
+    "ValidationStatus",
+    "SQLSafetyValidator",
+    "SQLSyntaxValidator",
+    "SQLValidationGatekeeper",
 ]
