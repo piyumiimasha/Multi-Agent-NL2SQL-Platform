@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from ..llm_client import GroqLLMClient
+from infastructure.llm.llm_client import GroqLLMClient
 from ..messages import InterpreterInput, InterpreterOutput, QueryIntent
 
 INTERPRETER_SYSTEM_PROMPT = (

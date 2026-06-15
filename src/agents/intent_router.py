@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ..llm_client import GroqLLMClient
+from infastructure.llm.llm_client import GroqLLMClient
 from ..messages import QueryIntent, RouterInput, RouterOutput
 
 ROUTER_SYSTEM_PROMPT = (
