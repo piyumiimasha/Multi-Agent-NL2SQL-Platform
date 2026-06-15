@@ -34,7 +34,7 @@ class SQLQueryExecutor:
 
     def execute(self, sql_text: str) -> QueryExecutionResult:
         try:
-            with psycopg.connect(self.database_url, row_factory=dict_row, connect_timeout=self.timeout_seconds) as conn:
+            with psycopg.connect(self.database_url, row_factory=dict_row, connect_timeout=self.timeout_seconds, prepare_threshold=None) as conn:
                 with conn.cursor() as cur:
                     cur.execute(sql_text)
                     rows = cur.fetchmany(self.row_limit)

@@ -86,7 +86,7 @@ class PostgresSchemaIntrospector:
 
     def load(self) -> SchemaSnapshot:
         snapshot = SchemaSnapshot()
-        with psycopg.connect(self.database_url, row_factory=dict_row) as connection:
+        with psycopg.connect(self.database_url, row_factory=dict_row, prepare_threshold=None) as connection:
             with connection.cursor() as cursor:
                 table_names = self._load_table_names(cursor)
                 foreign_keys = self._load_foreign_keys(cursor)

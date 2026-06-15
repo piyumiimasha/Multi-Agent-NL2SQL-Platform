@@ -110,7 +110,7 @@ class SQLSyntaxValidator:
 
         statement = safety.sql or sql_text.strip()
         try:
-            with psycopg.connect(self.database_url, connect_timeout=self.timeout_seconds) as connection:
+            with psycopg.connect(self.database_url, connect_timeout=self.timeout_seconds, prepare_threshold=None) as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(f"EXPLAIN {statement}")
             return ValidationResult(status=ValidationStatus.OK, user_message="SQL is valid.", sql=statement)
