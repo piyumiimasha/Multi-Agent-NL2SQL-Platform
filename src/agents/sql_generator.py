@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from ..messages import QueryIntent, SQLGeneratorInput, SQLGeneratorOutput
-from ..retry_engine import NL2SQLEngine, EngineStatus
-from ..executor import SQLQueryExecutor
+from messages.messages import QueryIntent, SQLGeneratorInput, SQLGeneratorOutput
+from nl2sql.retry_engine import NL2SQLEngine, EngineStatus
+from nl2sql.executor import SQLQueryExecutor
 
 INTENT_HINTS = {
     QueryIntent.AGGREGATION: "This is an aggregation question — likely needs GROUP BY, COUNT/SUM/AVG.",

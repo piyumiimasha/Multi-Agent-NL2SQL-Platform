@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-from src.agents.fallback import FallbackAgent
-from src.agents.intent_router import IntentRouterAgent
-from src.agents.result_interpreter import ResultInterpreterAgent
-from src.agents.sql_generator import SQLGeneratorAgent
-from src.messages import (
+from agents.fallback import FallbackAgent
+from agents.intent_router import IntentRouterAgent
+from agents.result_interpreter import ResultInterpreterAgent
+from agents.sql_generator import SQLGeneratorAgent
+from messages.messages import (
     InterpreterInput,
     PipelineResult,
     QueryIntent,
     RouterInput,
     SQLGeneratorInput,
 )
-from src.tracing import AgentTracer
+from tracing.tracing import AgentTracer
 
 
 class Orchestrator:

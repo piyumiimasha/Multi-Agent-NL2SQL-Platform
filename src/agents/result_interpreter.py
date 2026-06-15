@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 
 from infastructure.llm.llm_client import GroqLLMClient
-from ..messages import InterpreterInput, InterpreterOutput, QueryIntent
+from messages.messages import InterpreterInput, InterpreterOutput, QueryIntent
 
 INTERPRETER_SYSTEM_PROMPT = (
     "You are a hospital data analyst. Given a question, the SQL that answered it, "

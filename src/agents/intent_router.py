@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from infastructure.llm.llm_client import GroqLLMClient
-from ..messages import QueryIntent, RouterInput, RouterOutput
+from messages.messages import QueryIntent, RouterInput, RouterOutput
 
 ROUTER_SYSTEM_PROMPT = (
     "You classify hospital analytics questions into exactly one category:\n"

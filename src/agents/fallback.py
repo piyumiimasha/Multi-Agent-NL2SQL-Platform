@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ..messages import PipelineResult, QueryIntent
+from messages.messages import PipelineResult, QueryIntent
 
 
 class FallbackAgent:
