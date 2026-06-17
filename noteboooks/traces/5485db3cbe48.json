@@ -1,0 +1,3550 @@
+{
+  "query_id": "5485db3cbe48",
+  "question": "what are all appoinments to DR.Renuka",
+  "started_at": 1781709499.191969,
+  "total_latency_ms": 14301.12,
+  "steps": [
+    {
+      "agent": "intent_router_attempt_1",
+      "latency_ms": 329.13,
+      "input": null,
+      "output": {
+        "question": "what are all appoinments to DR.Renuka",
+        "intent": "lookup",
+        "reasoning": "The question is asking for specific records of appointments for a particular doctor."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "sql_generator_attempt_1",
+      "latency_ms": 12994.92,
+      "input": null,
+      "output": {
+        "success": true,
+        "sql": "SELECT a.appointment_id, a.appointment_date, a.appointment_time, a.status, a.reason \nFROM appointments a \nJOIN doctors d ON a.doctor_id = d.doctor_id \nWHERE d.first_name = 'Renuka'",
+        "rows": [
+          {
+            "appointment_id": 173,
+            "appointment_date": "2023-10-11",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 1068,
+            "appointment_date": "2024-10-23",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 2162,
+            "appointment_date": "2022-06-06",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 2240,
+            "appointment_date": "2022-08-06",
+            "appointment_time": "09:15:00",
+            "status": "No-Show",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 2289,
+            "appointment_date": "2022-10-19",
+            "appointment_time": "18:15:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 2410,
+            "appointment_date": "2024-01-17",
+            "appointment_time": "17:00:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 2931,
+            "appointment_date": "2023-12-21",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 3475,
+            "appointment_date": "2023-09-18",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 5178,
+            "appointment_date": "2024-06-29",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 5242,
+            "appointment_date": "2023-08-22",
+            "appointment_time": "11:15:00",
+            "status": "Cancelled",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 6557,
+            "appointment_date": "2022-04-29",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 6625,
+            "appointment_date": "2024-09-21",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 7022,
+            "appointment_date": "2022-11-03",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 7464,
+            "appointment_date": "2023-11-16",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 7466,
+            "appointment_date": "2024-06-13",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 10512,
+            "appointment_date": "2024-05-28",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 11510,
+            "appointment_date": "2023-12-31",
+            "appointment_time": "08:15:00",
+            "status": "No-Show",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 12689,
+            "appointment_date": "2022-04-01",
+            "appointment_time": "07:15:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 13036,
+            "appointment_date": "2022-03-11",
+            "appointment_time": "11:30:00",
+            "status": "Scheduled",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 13510,
+            "appointment_date": "2024-06-16",
+            "appointment_time": "11:00:00",
+            "status": "Scheduled",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 14124,
+            "appointment_date": "2023-10-05",
+            "appointment_time": "19:30:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 14257,
+            "appointment_date": "2024-05-14",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 14391,
+            "appointment_date": "2022-09-17",
+            "appointment_time": "17:15:00",
+            "status": "Cancelled",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 15207,
+            "appointment_date": "2024-09-05",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 15468,
+            "appointment_date": "2022-08-19",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 15791,
+            "appointment_date": "2024-12-09",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 15892,
+            "appointment_date": "2024-05-23",
+            "appointment_time": "12:00:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 16317,
+            "appointment_date": "2024-07-26",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 17203,
+            "appointment_date": "2023-02-25",
+            "appointment_time": "07:45:00",
+            "status": "Cancelled",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 18326,
+            "appointment_date": "2024-04-10",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 18589,
+            "appointment_date": "2024-09-03",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 18597,
+            "appointment_date": "2023-02-20",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 18734,
+            "appointment_date": "2023-12-01",
+            "appointment_time": "11:15:00",
+            "status": "No-Show",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 19637,
+            "appointment_date": "2023-02-05",
+            "appointment_time": "09:30:00",
+            "status": "Scheduled",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 20232,
+            "appointment_date": "2024-06-19",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 20505,
+            "appointment_date": "2023-08-25",
+            "appointment_time": "10:00:00",
+            "status": "Cancelled",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 20892,
+            "appointment_date": "2024-11-12",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 21155,
+            "appointment_date": "2023-04-12",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 21459,
+            "appointment_date": "2024-09-04",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 21482,
+            "appointment_date": "2022-08-29",
+            "appointment_time": "16:00:00",
+            "status": "No-Show",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 22665,
+            "appointment_date": "2024-10-31",
+            "appointment_time": "10:45:00",
+            "status": "Scheduled",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 22766,
+            "appointment_date": "2023-03-21",
+            "appointment_time": "15:30:00",
+            "status": "Scheduled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 23059,
+            "appointment_date": "2023-02-17",
+            "appointment_time": "14:15:00",
+            "status": "Scheduled",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 23411,
+            "appointment_date": "2023-10-01",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 23452,
+            "appointment_date": "2022-12-20",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 23502,
+            "appointment_date": "2022-01-16",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 24114,
+            "appointment_date": "2024-01-07",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 24668,
+            "appointment_date": "2023-09-24",
+            "appointment_time": "18:30:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 24930,
+            "appointment_date": "2024-11-12",
+            "appointment_time": "18:15:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 25568,
+            "appointment_date": "2022-02-26",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 26874,
+            "appointment_date": "2023-02-19",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 27344,
+            "appointment_date": "2022-03-31",
+            "appointment_time": "15:15:00",
+            "status": "Cancelled",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 27403,
+            "appointment_date": "2024-09-07",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 28053,
+            "appointment_date": "2024-04-26",
+            "appointment_time": "09:45:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 28257,
+            "appointment_date": "2024-09-06",
+            "appointment_time": "15:45:00",
+            "status": "Scheduled",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 28811,
+            "appointment_date": "2023-03-09",
+            "appointment_time": "18:00:00",
+            "status": "Scheduled",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 28994,
+            "appointment_date": "2024-09-15",
+            "appointment_time": "07:15:00",
+            "status": "Cancelled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 29453,
+            "appointment_date": "2023-11-24",
+            "appointment_time": "08:30:00",
+            "status": "Cancelled",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 29734,
+            "appointment_date": "2023-07-04",
+            "appointment_time": "08:45:00",
+            "status": "Scheduled",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 30289,
+            "appointment_date": "2023-01-12",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 31197,
+            "appointment_date": "2022-10-29",
+            "appointment_time": "08:15:00",
+            "status": "Scheduled",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 32517,
+            "appointment_date": "2022-02-16",
+            "appointment_time": "12:00:00",
+            "status": "No-Show",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 33204,
+            "appointment_date": "2024-08-14",
+            "appointment_time": "18:15:00",
+            "status": "No-Show",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 33336,
+            "appointment_date": "2022-10-08",
+            "appointment_time": "08:30:00",
+            "status": "Scheduled",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 33558,
+            "appointment_date": "2023-03-05",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 34194,
+            "appointment_date": "2024-03-16",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 35086,
+            "appointment_date": "2024-01-18",
+            "appointment_time": "17:15:00",
+            "status": "No-Show",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 36033,
+            "appointment_date": "2022-02-22",
+            "appointment_time": "19:45:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 36301,
+            "appointment_date": "2022-12-15",
+            "appointment_time": "12:45:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 36865,
+            "appointment_date": "2024-07-15",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 37273,
+            "appointment_date": "2023-03-16",
+            "appointment_time": "11:45:00",
+            "status": "Cancelled",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 38014,
+            "appointment_date": "2022-04-28",
+            "appointment_time": "12:45:00",
+            "status": "Cancelled",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 38613,
+            "appointment_date": "2022-01-27",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 39597,
+            "appointment_date": "2022-11-19",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 40062,
+            "appointment_date": "2024-01-29",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 40964,
+            "appointment_date": "2024-06-13",
+            "appointment_time": "12:15:00",
+            "status": "Scheduled",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 41212,
+            "appointment_date": "2024-02-27",
+            "appointment_time": "13:00:00",
+            "status": "Scheduled",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 41497,
+            "appointment_date": "2023-05-08",
+            "appointment_time": "10:30:00",
+            "status": "Cancelled",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 41503,
+            "appointment_date": "2024-03-15",
+            "appointment_time": "07:30:00",
+            "status": "No-Show",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 41947,
+            "appointment_date": "2024-05-15",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 42118,
+            "appointment_date": "2023-12-22",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 42976,
+            "appointment_date": "2022-11-15",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 43208,
+            "appointment_date": "2023-11-29",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 43212,
+            "appointment_date": "2022-07-29",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 43356,
+            "appointment_date": "2023-08-23",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 43506,
+            "appointment_date": "2024-07-14",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 44016,
+            "appointment_date": "2024-06-13",
+            "appointment_time": "07:15:00",
+            "status": "Scheduled",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 44587,
+            "appointment_date": "2022-01-05",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 44629,
+            "appointment_date": "2023-06-24",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 45142,
+            "appointment_date": "2023-12-21",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 45779,
+            "appointment_date": "2022-11-11",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 46653,
+            "appointment_date": "2024-09-02",
+            "appointment_time": "11:30:00",
+            "status": "No-Show",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 47076,
+            "appointment_date": "2022-08-05",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 47131,
+            "appointment_date": "2023-04-09",
+            "appointment_time": "11:45:00",
+            "status": "Scheduled",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 47457,
+            "appointment_date": "2024-07-27",
+            "appointment_time": "18:00:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 47799,
+            "appointment_date": "2022-10-14",
+            "appointment_time": "12:00:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 49770,
+            "appointment_date": "2024-10-09",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 50325,
+            "appointment_date": "2023-01-05",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 50394,
+            "appointment_date": "2024-03-10",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 50668,
+            "appointment_date": "2023-08-25",
+            "appointment_time": "09:45:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 50838,
+            "appointment_date": "2023-09-16",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 52246,
+            "appointment_date": "2023-05-17",
+            "appointment_time": "16:00:00",
+            "status": "Cancelled",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 52336,
+            "appointment_date": "2023-04-28",
+            "appointment_time": "09:15:00",
+            "status": "Cancelled",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 52830,
+            "appointment_date": "2024-09-06",
+            "appointment_time": "09:15:00",
+            "status": "No-Show",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 52865,
+            "appointment_date": "2022-05-03",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 53984,
+            "appointment_date": "2023-02-04",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 54214,
+            "appointment_date": "2023-03-02",
+            "appointment_time": "14:30:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 54774,
+            "appointment_date": "2024-01-10",
+            "appointment_time": "12:00:00",
+            "status": "No-Show",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 54990,
+            "appointment_date": "2023-02-12",
+            "appointment_time": "18:15:00",
+            "status": "Scheduled",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 55257,
+            "appointment_date": "2022-07-20",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 56001,
+            "appointment_date": "2024-02-15",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 56130,
+            "appointment_date": "2023-08-21",
+            "appointment_time": "13:15:00",
+            "status": "Scheduled",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 56522,
+            "appointment_date": "2022-11-19",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 56620,
+            "appointment_date": "2023-10-04",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 56658,
+            "appointment_date": "2024-02-20",
+            "appointment_time": "14:45:00",
+            "status": "Scheduled",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 56862,
+            "appointment_date": "2022-03-05",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 57207,
+            "appointment_date": "2022-09-20",
+            "appointment_time": "13:45:00",
+            "status": "Cancelled",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 57383,
+            "appointment_date": "2022-11-26",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 57690,
+            "appointment_date": "2022-08-25",
+            "appointment_time": "18:30:00",
+            "status": "No-Show",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 58013,
+            "appointment_date": "2022-05-14",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 58188,
+            "appointment_date": "2023-04-28",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 58425,
+            "appointment_date": "2023-04-20",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 58487,
+            "appointment_date": "2022-03-06",
+            "appointment_time": "10:00:00",
+            "status": "Cancelled",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 58868,
+            "appointment_date": "2022-03-05",
+            "appointment_time": "12:00:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 59561,
+            "appointment_date": "2022-10-16",
+            "appointment_time": "19:15:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 59642,
+            "appointment_date": "2022-06-09",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 59647,
+            "appointment_date": "2024-02-17",
+            "appointment_time": "16:45:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 60185,
+            "appointment_date": "2022-05-07",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 60783,
+            "appointment_date": "2024-03-18",
+            "appointment_time": "15:00:00",
+            "status": "No-Show",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 60978,
+            "appointment_date": "2024-04-27",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 61259,
+            "appointment_date": "2024-12-30",
+            "appointment_time": "14:30:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 61923,
+            "appointment_date": "2022-06-25",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 63230,
+            "appointment_date": "2024-10-10",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 64630,
+            "appointment_date": "2022-06-29",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 64853,
+            "appointment_date": "2022-01-11",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 65081,
+            "appointment_date": "2022-03-22",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 65723,
+            "appointment_date": "2023-10-22",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 66544,
+            "appointment_date": "2022-06-06",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 67060,
+            "appointment_date": "2022-07-05",
+            "appointment_time": "09:45:00",
+            "status": "Scheduled",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 67663,
+            "appointment_date": "2022-02-14",
+            "appointment_time": "16:00:00",
+            "status": "Cancelled",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 67858,
+            "appointment_date": "2023-06-07",
+            "appointment_time": "19:15:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 67960,
+            "appointment_date": "2022-08-20",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 68137,
+            "appointment_date": "2023-11-02",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 68144,
+            "appointment_date": "2023-10-29",
+            "appointment_time": "17:00:00",
+            "status": "Scheduled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 69344,
+            "appointment_date": "2024-03-18",
+            "appointment_time": "13:15:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 69824,
+            "appointment_date": "2023-02-03",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 70298,
+            "appointment_date": "2022-04-25",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 70434,
+            "appointment_date": "2022-09-04",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 70703,
+            "appointment_date": "2023-02-09",
+            "appointment_time": "10:00:00",
+            "status": "Cancelled",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 71236,
+            "appointment_date": "2022-12-02",
+            "appointment_time": "10:30:00",
+            "status": "No-Show",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 72596,
+            "appointment_date": "2024-06-25",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 73319,
+            "appointment_date": "2024-10-01",
+            "appointment_time": "18:00:00",
+            "status": "Cancelled",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 73500,
+            "appointment_date": "2023-04-10",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 73893,
+            "appointment_date": "2022-08-23",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 74057,
+            "appointment_date": "2023-10-01",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 74411,
+            "appointment_date": "2022-04-19",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 74658,
+            "appointment_date": "2023-12-26",
+            "appointment_time": "09:45:00",
+            "status": "No-Show",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 74937,
+            "appointment_date": "2022-10-01",
+            "appointment_time": "18:00:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 75038,
+            "appointment_date": "2024-10-18",
+            "appointment_time": "17:45:00",
+            "status": "No-Show",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 75316,
+            "appointment_date": "2024-09-20",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 75495,
+            "appointment_date": "2023-04-25",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 75506,
+            "appointment_date": "2023-05-25",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 76166,
+            "appointment_date": "2023-03-16",
+            "appointment_time": "07:30:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 77035,
+            "appointment_date": "2024-11-23",
+            "appointment_time": "08:45:00",
+            "status": "Cancelled",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 77166,
+            "appointment_date": "2024-09-20",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 77607,
+            "appointment_date": "2022-10-12",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 78147,
+            "appointment_date": "2024-12-20",
+            "appointment_time": "16:45:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 78168,
+            "appointment_date": "2023-01-11",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 78226,
+            "appointment_date": "2022-05-28",
+            "appointment_time": "07:15:00",
+            "status": "Cancelled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 78549,
+            "appointment_date": "2024-07-09",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 78639,
+            "appointment_date": "2022-02-10",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 79388,
+            "appointment_date": "2024-09-26",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 80393,
+            "appointment_date": "2023-05-31",
+            "appointment_time": "17:30:00",
+            "status": "Completed",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 80769,
+            "appointment_date": "2023-07-22",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 81632,
+            "appointment_date": "2024-05-02",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 81777,
+            "appointment_date": "2023-05-03",
+            "appointment_time": "17:00:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 82941,
+            "appointment_date": "2023-08-21",
+            "appointment_time": "16:30:00",
+            "status": "No-Show",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 82997,
+            "appointment_date": "2024-06-07",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 83243,
+            "appointment_date": "2023-12-23",
+            "appointment_time": "08:00:00",
+            "status": "Scheduled",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 83329,
+            "appointment_date": "2022-11-22",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 83877,
+            "appointment_date": "2022-03-08",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 84399,
+            "appointment_date": "2023-07-27",
+            "appointment_time": "16:45:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 84501,
+            "appointment_date": "2022-04-05",
+            "appointment_time": "15:15:00",
+            "status": "Cancelled",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 84757,
+            "appointment_date": "2022-08-20",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 85155,
+            "appointment_date": "2024-03-01",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 86684,
+            "appointment_date": "2024-07-29",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 87578,
+            "appointment_date": "2022-09-11",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 88335,
+            "appointment_date": "2022-10-14",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 88770,
+            "appointment_date": "2022-09-08",
+            "appointment_time": "08:15:00",
+            "status": "Scheduled",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 90520,
+            "appointment_date": "2022-03-17",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 91105,
+            "appointment_date": "2022-03-19",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 93610,
+            "appointment_date": "2024-10-02",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 94151,
+            "appointment_date": "2023-09-26",
+            "appointment_time": "19:45:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 94740,
+            "appointment_date": "2024-09-06",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 95000,
+            "appointment_date": "2022-03-06",
+            "appointment_time": "14:15:00",
+            "status": "No-Show",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 95114,
+            "appointment_date": "2024-11-11",
+            "appointment_time": "14:15:00",
+            "status": "Cancelled",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 95585,
+            "appointment_date": "2022-10-25",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 96446,
+            "appointment_date": "2022-05-06",
+            "appointment_time": "13:30:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 97064,
+            "appointment_date": "2022-07-04",
+            "appointment_time": "17:30:00",
+            "status": "No-Show",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 97674,
+            "appointment_date": "2024-06-05",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 98065,
+            "appointment_date": "2023-09-26",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 98201,
+            "appointment_date": "2022-10-18",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 98372,
+            "appointment_date": "2024-12-11",
+            "appointment_time": "10:15:00",
+            "status": "Cancelled",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 98384,
+            "appointment_date": "2024-04-30",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 98608,
+            "appointment_date": "2022-11-28",
+            "appointment_time": "19:00:00",
+            "status": "Cancelled",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 99078,
+            "appointment_date": "2024-07-03",
+            "appointment_time": "07:15:00",
+            "status": "Cancelled",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 99130,
+            "appointment_date": "2024-02-28",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 99251,
+            "appointment_date": "2023-02-28",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 100747,
+            "appointment_date": "2022-12-19",
+            "appointment_time": "10:00:00",
+            "status": "Cancelled",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 100830,
+            "appointment_date": "2023-02-03",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 101032,
+            "appointment_date": "2023-02-04",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 101376,
+            "appointment_date": "2022-04-01",
+            "appointment_time": "11:45:00",
+            "status": "No-Show",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 102013,
+            "appointment_date": "2023-10-19",
+            "appointment_time": "09:00:00",
+            "status": "No-Show",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 102641,
+            "appointment_date": "2022-12-26",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 102662,
+            "appointment_date": "2024-10-21",
+            "appointment_time": "15:15:00",
+            "status": "No-Show",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 102755,
+            "appointment_date": "2022-04-18",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 103950,
+            "appointment_date": "2022-11-18",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 104073,
+            "appointment_date": "2023-07-31",
+            "appointment_time": "10:45:00",
+            "status": "No-Show",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 105060,
+            "appointment_date": "2024-05-23",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 105676,
+            "appointment_date": "2024-05-25",
+            "appointment_time": "19:15:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 107137,
+            "appointment_date": "2024-08-26",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 108105,
+            "appointment_date": "2022-11-13",
+            "appointment_time": "12:00:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 108427,
+            "appointment_date": "2022-06-30",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 108938,
+            "appointment_date": "2024-11-10",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 109367,
+            "appointment_date": "2023-03-30",
+            "appointment_time": "15:00:00",
+            "status": "Scheduled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 109646,
+            "appointment_date": "2024-04-08",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 109986,
+            "appointment_date": "2024-12-04",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 110869,
+            "appointment_date": "2022-08-19",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 110887,
+            "appointment_date": "2022-12-14",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 111171,
+            "appointment_date": "2023-09-14",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 111708,
+            "appointment_date": "2024-07-20",
+            "appointment_time": "09:30:00",
+            "status": "Scheduled",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 112592,
+            "appointment_date": "2022-01-17",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 113368,
+            "appointment_date": "2022-09-20",
+            "appointment_time": "09:30:00",
+            "status": "Cancelled",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 113981,
+            "appointment_date": "2023-09-16",
+            "appointment_time": "09:00:00",
+            "status": "Cancelled",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 114742,
+            "appointment_date": "2023-10-13",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 114940,
+            "appointment_date": "2024-09-15",
+            "appointment_time": "15:15:00",
+            "status": "No-Show",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 114944,
+            "appointment_date": "2024-05-02",
+            "appointment_time": "11:45:00",
+            "status": "Scheduled",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 116040,
+            "appointment_date": "2022-08-14",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 116313,
+            "appointment_date": "2024-07-23",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 116907,
+            "appointment_date": "2024-10-16",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 117095,
+            "appointment_date": "2023-06-09",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 117168,
+            "appointment_date": "2024-02-09",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 117209,
+            "appointment_date": "2022-12-28",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 118119,
+            "appointment_date": "2023-12-06",
+            "appointment_time": "17:00:00",
+            "status": "Cancelled",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 118786,
+            "appointment_date": "2024-01-30",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 118927,
+            "appointment_date": "2024-04-11",
+            "appointment_time": "19:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 119019,
+            "appointment_date": "2024-10-29",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 120385,
+            "appointment_date": "2022-06-12",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 120644,
+            "appointment_date": "2023-11-03",
+            "appointment_time": "16:30:00",
+            "status": "Cancelled",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 121956,
+            "appointment_date": "2023-05-24",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 122107,
+            "appointment_date": "2022-06-02",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 122396,
+            "appointment_date": "2022-04-30",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 122935,
+            "appointment_date": "2023-08-08",
+            "appointment_time": "14:45:00",
+            "status": "Cancelled",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 123271,
+            "appointment_date": "2023-04-02",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 125127,
+            "appointment_date": "2024-03-26",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 125553,
+            "appointment_date": "2024-07-07",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 126683,
+            "appointment_date": "2023-03-19",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 128859,
+            "appointment_date": "2023-08-30",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 128954,
+            "appointment_date": "2023-09-23",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 129594,
+            "appointment_date": "2023-04-01",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 129731,
+            "appointment_date": "2024-02-17",
+            "appointment_time": "16:45:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 130084,
+            "appointment_date": "2023-05-04",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 130506,
+            "appointment_date": "2022-04-04",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 130874,
+            "appointment_date": "2022-09-05",
+            "appointment_time": "14:30:00",
+            "status": "No-Show",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 130932,
+            "appointment_date": "2024-07-18",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 132217,
+            "appointment_date": "2023-10-20",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 132326,
+            "appointment_date": "2023-11-29",
+            "appointment_time": "09:45:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 132614,
+            "appointment_date": "2023-02-12",
+            "appointment_time": "14:00:00",
+            "status": "Scheduled",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 132833,
+            "appointment_date": "2022-01-29",
+            "appointment_time": "09:00:00",
+            "status": "Cancelled",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 133564,
+            "appointment_date": "2022-06-29",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 134453,
+            "appointment_date": "2023-03-16",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 134710,
+            "appointment_date": "2024-06-19",
+            "appointment_time": "13:15:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 136212,
+            "appointment_date": "2024-05-01",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 138759,
+            "appointment_date": "2023-01-01",
+            "appointment_time": "15:45:00",
+            "status": "Scheduled",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 139135,
+            "appointment_date": "2022-05-31",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 139590,
+            "appointment_date": "2024-09-15",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 140172,
+            "appointment_date": "2024-06-23",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Diabetes management"
+          },
+          {
+            "appointment_id": 140479,
+            "appointment_date": "2024-10-20",
+            "appointment_time": "08:30:00",
+            "status": "Cancelled",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 141005,
+            "appointment_date": "2024-04-29",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 141139,
+            "appointment_date": "2023-10-24",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 141396,
+            "appointment_date": "2024-01-17",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 141404,
+            "appointment_date": "2022-09-24",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 141679,
+            "appointment_date": "2024-06-11",
+            "appointment_time": "11:30:00",
+            "status": "Cancelled",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 142188,
+            "appointment_date": "2022-02-08",
+            "appointment_time": "11:45:00",
+            "status": "Scheduled",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 142328,
+            "appointment_date": "2022-01-16",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 142344,
+            "appointment_date": "2024-06-04",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 142890,
+            "appointment_date": "2024-09-08",
+            "appointment_time": "09:15:00",
+            "status": "Scheduled",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 143623,
+            "appointment_date": "2023-07-14",
+            "appointment_time": "09:15:00",
+            "status": "No-Show",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 143724,
+            "appointment_date": "2022-09-10",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 143987,
+            "appointment_date": "2022-01-12",
+            "appointment_time": "17:00:00",
+            "status": "Scheduled",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 144392,
+            "appointment_date": "2023-06-01",
+            "appointment_time": "19:00:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 144825,
+            "appointment_date": "2023-09-20",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 144828,
+            "appointment_date": "2023-09-17",
+            "appointment_time": "17:15:00",
+            "status": "Scheduled",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 144911,
+            "appointment_date": "2024-03-20",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 145075,
+            "appointment_date": "2023-04-24",
+            "appointment_time": "11:45:00",
+            "status": "No-Show",
+            "reason": "Thyroid checkup"
+          },
+          {
+            "appointment_id": 146661,
+            "appointment_date": "2024-05-26",
+            "appointment_time": "15:45:00",
+            "status": "Scheduled",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 146687,
+            "appointment_date": "2024-01-26",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 146729,
+            "appointment_date": "2022-02-04",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 147953,
+            "appointment_date": "2024-08-14",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 148223,
+            "appointment_date": "2022-07-31",
+            "appointment_time": "08:15:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 148355,
+            "appointment_date": "2023-03-03",
+            "appointment_time": "16:30:00",
+            "status": "Scheduled",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 148816,
+            "appointment_date": "2024-02-14",
+            "appointment_time": "08:15:00",
+            "status": "No-Show",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 149353,
+            "appointment_date": "2023-06-13",
+            "appointment_time": "15:45:00",
+            "status": "Cancelled",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 150198,
+            "appointment_date": "2024-12-20",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 150983,
+            "appointment_date": "2024-04-30",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 151756,
+            "appointment_date": "2023-06-24",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 151964,
+            "appointment_date": "2024-04-19",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 152243,
+            "appointment_date": "2022-04-08",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 152271,
+            "appointment_date": "2022-10-18",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 152581,
+            "appointment_date": "2024-10-31",
+            "appointment_time": "14:15:00",
+            "status": "Scheduled",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 152792,
+            "appointment_date": "2024-11-22",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 154095,
+            "appointment_date": "2022-08-07",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 154140,
+            "appointment_date": "2024-05-20",
+            "appointment_time": "18:30:00",
+            "status": "Scheduled",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 154232,
+            "appointment_date": "2022-08-15",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Chronic pain management"
+          },
+          {
+            "appointment_id": 154388,
+            "appointment_date": "2023-03-09",
+            "appointment_time": "13:00:00",
+            "status": "Scheduled",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 154861,
+            "appointment_date": "2022-11-19",
+            "appointment_time": "12:15:00",
+            "status": "No-Show",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 154894,
+            "appointment_date": "2023-08-16",
+            "appointment_time": "09:15:00",
+            "status": "No-Show",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 155294,
+            "appointment_date": "2024-03-27",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 156573,
+            "appointment_date": "2023-11-07",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 157310,
+            "appointment_date": "2024-07-31",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 157682,
+            "appointment_date": "2024-05-22",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 157880,
+            "appointment_date": "2024-03-08",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 159825,
+            "appointment_date": "2022-08-11",
+            "appointment_time": "11:15:00",
+            "status": "Cancelled",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 160110,
+            "appointment_date": "2024-01-29",
+            "appointment_time": "17:15:00",
+            "status": "Cancelled",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 160213,
+            "appointment_date": "2022-05-10",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 160451,
+            "appointment_date": "2023-06-13",
+            "appointment_time": "07:30:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 160457,
+            "appointment_date": "2022-07-05",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 160930,
+            "appointment_date": "2022-12-09",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 162988,
+            "appointment_date": "2022-04-19",
+            "appointment_time": "15:00:00",
+            "status": "No-Show",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 163085,
+            "appointment_date": "2023-09-14",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 163099,
+            "appointment_date": "2024-10-23",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 163468,
+            "appointment_date": "2024-11-22",
+            "appointment_time": "15:30:00",
+            "status": "Scheduled",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 163835,
+            "appointment_date": "2024-04-02",
+            "appointment_time": "17:00:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 164264,
+            "appointment_date": "2024-07-30",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 164627,
+            "appointment_date": "2022-09-01",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 164756,
+            "appointment_date": "2022-03-30",
+            "appointment_time": "13:30:00",
+            "status": "No-Show",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 164804,
+            "appointment_date": "2024-12-22",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 165502,
+            "appointment_date": "2023-09-05",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 165741,
+            "appointment_date": "2023-09-09",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 166553,
+            "appointment_date": "2024-06-24",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 166567,
+            "appointment_date": "2022-12-02",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 166912,
+            "appointment_date": "2024-08-21",
+            "appointment_time": "16:45:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 167331,
+            "appointment_date": "2024-08-28",
+            "appointment_time": "17:30:00",
+            "status": "Cancelled",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 167390,
+            "appointment_date": "2023-08-05",
+            "appointment_time": "17:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 168906,
+            "appointment_date": "2024-11-08",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 170003,
+            "appointment_date": "2022-01-17",
+            "appointment_time": "10:00:00",
+            "status": "Cancelled",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 170565,
+            "appointment_date": "2023-02-10",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 170968,
+            "appointment_date": "2024-05-29",
+            "appointment_time": "09:00:00",
+            "status": "No-Show",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 171028,
+            "appointment_date": "2024-09-21",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 172213,
+            "appointment_date": "2022-05-07",
+            "appointment_time": "17:00:00",
+            "status": "Completed",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 173203,
+            "appointment_date": "2024-10-23",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 173776,
+            "appointment_date": "2023-12-11",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 173972,
+            "appointment_date": "2023-12-22",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 174111,
+            "appointment_date": "2022-07-16",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 174117,
+            "appointment_date": "2024-06-09",
+            "appointment_time": "15:45:00",
+            "status": "No-Show",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 174227,
+            "appointment_date": "2024-11-29",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 174281,
+            "appointment_date": "2022-06-07",
+            "appointment_time": "08:45:00",
+            "status": "No-Show",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 174369,
+            "appointment_date": "2023-12-26",
+            "appointment_time": "09:30:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 174791,
+            "appointment_date": "2024-12-26",
+            "appointment_time": "14:15:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 174822,
+            "appointment_date": "2022-05-26",
+            "appointment_time": "08:15:00",
+            "status": "Scheduled",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 175580,
+            "appointment_date": "2023-12-21",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 175618,
+            "appointment_date": "2022-04-22",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 175659,
+            "appointment_date": "2022-12-16",
+            "appointment_time": "19:30:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 176623,
+            "appointment_date": "2023-01-28",
+            "appointment_time": "17:15:00",
+            "status": "No-Show",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 176665,
+            "appointment_date": "2024-01-03",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 176992,
+            "appointment_date": "2024-04-25",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 177397,
+            "appointment_date": "2024-01-19",
+            "appointment_time": "08:15:00",
+            "status": "Cancelled",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 178107,
+            "appointment_date": "2024-12-10",
+            "appointment_time": "12:45:00",
+            "status": "Cancelled",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 178519,
+            "appointment_date": "2022-05-17",
+            "appointment_time": "11:15:00",
+            "status": "No-Show",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 179599,
+            "appointment_date": "2024-04-06",
+            "appointment_time": "18:00:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 180856,
+            "appointment_date": "2022-01-03",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 182251,
+            "appointment_date": "2022-05-13",
+            "appointment_time": "13:00:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 183349,
+            "appointment_date": "2024-04-26",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 183620,
+            "appointment_date": "2023-12-24",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 184801,
+            "appointment_date": "2022-03-03",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 185203,
+            "appointment_date": "2023-02-07",
+            "appointment_time": "16:00:00",
+            "status": "Scheduled",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 185297,
+            "appointment_date": "2024-10-01",
+            "appointment_time": "18:00:00",
+            "status": "No-Show",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 186730,
+            "appointment_date": "2024-11-15",
+            "appointment_time": "10:45:00",
+            "status": "Scheduled",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 187965,
+            "appointment_date": "2023-04-21",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 187977,
+            "appointment_date": "2024-04-08",
+            "appointment_time": "18:30:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          },
+          {
+            "appointment_id": 188376,
+            "appointment_date": "2024-02-19",
+            "appointment_time": "10:30:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 188682,
+            "appointment_date": "2023-10-10",
+            "appointment_time": "14:30:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 188857,
+            "appointment_date": "2023-01-30",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 189486,
+            "appointment_date": "2024-01-24",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 189768,
+            "appointment_date": "2023-08-18",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 189841,
+            "appointment_date": "2022-05-31",
+            "appointment_time": "12:15:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 189996,
+            "appointment_date": "2023-11-05",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 190231,
+            "appointment_date": "2022-01-30",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 190814,
+            "appointment_date": "2022-04-16",
+            "appointment_time": "15:45:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 191988,
+            "appointment_date": "2023-05-05",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 192294,
+            "appointment_date": "2024-02-14",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 192741,
+            "appointment_date": "2024-12-26",
+            "appointment_time": "08:15:00",
+            "status": "Cancelled",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 193652,
+            "appointment_date": "2024-10-20",
+            "appointment_time": "12:45:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 194029,
+            "appointment_date": "2023-03-01",
+            "appointment_time": "09:15:00",
+            "status": "Cancelled",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 195698,
+            "appointment_date": "2022-03-21",
+            "appointment_time": "11:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 195884,
+            "appointment_date": "2024-11-06",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 195921,
+            "appointment_date": "2023-10-26",
+            "appointment_time": "07:45:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 197880,
+            "appointment_date": "2022-10-16",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 198080,
+            "appointment_date": "2022-05-23",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 198443,
+            "appointment_date": "2023-12-29",
+            "appointment_time": "10:00:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 198518,
+            "appointment_date": "2022-05-22",
+            "appointment_time": "09:15:00",
+            "status": "Scheduled",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 198965,
+            "appointment_date": "2023-08-17",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 199040,
+            "appointment_date": "2024-07-15",
+            "appointment_time": "17:15:00",
+            "status": "Scheduled",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 199057,
+            "appointment_date": "2024-10-30",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 199110,
+            "appointment_date": "2022-10-19",
+            "appointment_time": "18:15:00",
+            "status": "No-Show",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 199954,
+            "appointment_date": "2024-09-11",
+            "appointment_time": "18:00:00",
+            "status": "Scheduled",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 297,
+            "appointment_date": "2022-09-16",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 1367,
+            "appointment_date": "2024-09-06",
+            "appointment_time": "08:45:00",
+            "status": "No-Show",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 2207,
+            "appointment_date": "2022-09-12",
+            "appointment_time": "17:30:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 2324,
+            "appointment_date": "2024-09-27",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 2882,
+            "appointment_date": "2024-05-27",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 2884,
+            "appointment_date": "2023-09-15",
+            "appointment_time": "09:30:00",
+            "status": "No-Show",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 3034,
+            "appointment_date": "2023-04-13",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 3292,
+            "appointment_date": "2023-07-05",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 3372,
+            "appointment_date": "2024-08-31",
+            "appointment_time": "07:45:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 3611,
+            "appointment_date": "2024-09-06",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 5630,
+            "appointment_date": "2023-12-26",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Medication review"
+          },
+          {
+            "appointment_id": 5653,
+            "appointment_date": "2022-12-14",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 6107,
+            "appointment_date": "2024-04-22",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 7359,
+            "appointment_date": "2024-12-03",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 7485,
+            "appointment_date": "2022-06-09",
+            "appointment_time": "13:30:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 7534,
+            "appointment_date": "2024-08-09",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 7864,
+            "appointment_date": "2022-04-03",
+            "appointment_time": "08:45:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 7962,
+            "appointment_date": "2024-05-31",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 8490,
+            "appointment_date": "2023-05-13",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 8789,
+            "appointment_date": "2022-04-26",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 9532,
+            "appointment_date": "2024-12-09",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 10040,
+            "appointment_date": "2022-05-06",
+            "appointment_time": "13:45:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 11350,
+            "appointment_date": "2022-11-12",
+            "appointment_time": "10:45:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 13067,
+            "appointment_date": "2024-03-18",
+            "appointment_time": "15:30:00",
+            "status": "No-Show",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 14091,
+            "appointment_date": "2023-04-30",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 14125,
+            "appointment_date": "2022-01-07",
+            "appointment_time": "15:30:00",
+            "status": "Cancelled",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 14128,
+            "appointment_date": "2022-10-08",
+            "appointment_time": "09:30:00",
+            "status": "No-Show",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 14879,
+            "appointment_date": "2024-12-12",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 14894,
+            "appointment_date": "2022-03-21",
+            "appointment_time": "16:15:00",
+            "status": "Scheduled",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 15062,
+            "appointment_date": "2024-07-16",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Weight management"
+          },
+          {
+            "appointment_id": 15297,
+            "appointment_date": "2022-05-04",
+            "appointment_time": "17:45:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 16394,
+            "appointment_date": "2022-08-05",
+            "appointment_time": "09:45:00",
+            "status": "Completed",
+            "reason": "Urinary problems"
+          },
+          {
+            "appointment_id": 16876,
+            "appointment_date": "2024-08-12",
+            "appointment_time": "17:15:00",
+            "status": "Completed",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 17760,
+            "appointment_date": "2024-02-25",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 20972,
+            "appointment_date": "2022-08-07",
+            "appointment_time": "15:15:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 21296,
+            "appointment_date": "2022-02-24",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 22126,
+            "appointment_date": "2024-12-23",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 22208,
+            "appointment_date": "2024-08-08",
+            "appointment_time": "17:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 22695,
+            "appointment_date": "2024-10-21",
+            "appointment_time": "16:00:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 22806,
+            "appointment_date": "2022-12-17",
+            "appointment_time": "09:45:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 23891,
+            "appointment_date": "2024-11-09",
+            "appointment_time": "15:00:00",
+            "status": "Scheduled",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 24561,
+            "appointment_date": "2024-05-13",
+            "appointment_time": "12:45:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 25258,
+            "appointment_date": "2024-09-21",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Wound care"
+          },
+          {
+            "appointment_id": 25885,
+            "appointment_date": "2023-03-02",
+            "appointment_time": "09:45:00",
+            "status": "Cancelled",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 26389,
+            "appointment_date": "2022-12-18",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Fever and cold"
+          },
+          {
+            "appointment_id": 26644,
+            "appointment_date": "2022-07-13",
+            "appointment_time": "14:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 26739,
+            "appointment_date": "2024-01-15",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 26747,
+            "appointment_date": "2023-10-29",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Abdominal pain"
+          },
+          {
+            "appointment_id": 26906,
+            "appointment_date": "2023-03-25",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 26981,
+            "appointment_date": "2024-06-25",
+            "appointment_time": "12:30:00",
+            "status": "Scheduled",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 27137,
+            "appointment_date": "2022-11-25",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 27238,
+            "appointment_date": "2022-11-28",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Joint pain"
+          },
+          {
+            "appointment_id": 27953,
+            "appointment_date": "2023-12-05",
+            "appointment_time": "08:00:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 28497,
+            "appointment_date": "2023-06-09",
+            "appointment_time": "14:45:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 28673,
+            "appointment_date": "2024-08-18",
+            "appointment_time": "08:30:00",
+            "status": "Cancelled",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 28978,
+            "appointment_date": "2022-08-24",
+            "appointment_time": "12:00:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 30129,
+            "appointment_date": "2023-01-08",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Blood pressure monitoring"
+          },
+          {
+            "appointment_id": 30501,
+            "appointment_date": "2022-07-02",
+            "appointment_time": "13:15:00",
+            "status": "Completed",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 30896,
+            "appointment_date": "2024-04-01",
+            "appointment_time": "18:45:00",
+            "status": "Completed",
+            "reason": "Respiratory infection"
+          },
+          {
+            "appointment_id": 31080,
+            "appointment_date": "2022-09-02",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 31248,
+            "appointment_date": "2024-01-29",
+            "appointment_time": "07:15:00",
+            "status": "Completed",
+            "reason": "Mental health consultation"
+          },
+          {
+            "appointment_id": 31483,
+            "appointment_date": "2022-01-31",
+            "appointment_time": "15:30:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 32164,
+            "appointment_date": "2023-03-06",
+            "appointment_time": "16:15:00",
+            "status": "Completed",
+            "reason": "Allergy consultation"
+          },
+          {
+            "appointment_id": 32263,
+            "appointment_date": "2024-07-11",
+            "appointment_time": "18:30:00",
+            "status": "Scheduled",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 33717,
+            "appointment_date": "2024-12-27",
+            "appointment_time": "08:30:00",
+            "status": "Cancelled",
+            "reason": "Follow-up visit"
+          },
+          {
+            "appointment_id": 33798,
+            "appointment_date": "2023-12-11",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 33861,
+            "appointment_date": "2023-08-28",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 34103,
+            "appointment_date": "2023-11-24",
+            "appointment_time": "17:15:00",
+            "status": "Scheduled",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 34220,
+            "appointment_date": "2022-11-28",
+            "appointment_time": "15:45:00",
+            "status": "No-Show",
+            "reason": "Back pain"
+          },
+          {
+            "appointment_id": 35237,
+            "appointment_date": "2023-12-18",
+            "appointment_time": "09:00:00",
+            "status": "Completed",
+            "reason": "Routine checkup"
+          },
+          {
+            "appointment_id": 35515,
+            "appointment_date": "2022-10-07",
+            "appointment_time": "15:45:00",
+            "status": "No-Show",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 37642,
+            "appointment_date": "2022-02-24",
+            "appointment_time": "16:30:00",
+            "status": "Completed",
+            "reason": "Eye examination"
+          },
+          {
+            "appointment_id": 38213,
+            "appointment_date": "2023-04-04",
+            "appointment_time": "17:30:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 38314,
+            "appointment_date": "2023-07-25",
+            "appointment_time": "09:15:00",
+            "status": "No-Show",
+            "reason": "Headache"
+          },
+          {
+            "appointment_id": 38708,
+            "appointment_date": "2023-05-11",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Chest pain"
+          },
+          {
+            "appointment_id": 39065,
+            "appointment_date": "2023-01-11",
+            "appointment_time": "08:30:00",
+            "status": "Completed",
+            "reason": "Cardiac evaluation"
+          },
+          {
+            "appointment_id": 39155,
+            "appointment_date": "2022-05-24",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 39166,
+            "appointment_date": "2022-06-14",
+            "appointment_time": "11:30:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 40530,
+            "appointment_date": "2024-05-06",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Ear infection"
+          },
+          {
+            "appointment_id": 41597,
+            "appointment_date": "2023-07-05",
+            "appointment_time": "18:30:00",
+            "status": "Scheduled",
+            "reason": "Vaccination"
+          },
+          {
+            "appointment_id": 42535,
+            "appointment_date": "2024-12-03",
+            "appointment_time": "15:00:00",
+            "status": "Completed",
+            "reason": "Gastrointestinal issues"
+          },
+          {
+            "appointment_id": 42569,
+            "appointment_date": "2024-05-21",
+            "appointment_time": "11:00:00",
+            "status": "Completed",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 42797,
+            "appointment_date": "2022-11-28",
+            "appointment_time": "16:45:00",
+            "status": "Scheduled",
+            "reason": "Dental referral"
+          },
+          {
+            "appointment_id": 43064,
+            "appointment_date": "2024-04-07",
+            "appointment_time": "14:30:00",
+            "status": "Scheduled",
+            "reason": "Skin rash"
+          },
+          {
+            "appointment_id": 44409,
+            "appointment_date": "2024-08-31",
+            "appointment_time": "14:00:00",
+            "status": "Completed",
+            "reason": "Pregnancy checkup"
+          },
+          {
+            "appointment_id": 45389,
+            "appointment_date": "2024-09-05",
+            "appointment_time": "11:45:00",
+            "status": "Completed",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 45879,
+            "appointment_date": "2024-03-18",
+            "appointment_time": "12:30:00",
+            "status": "Completed",
+            "reason": "Post-surgery follow-up"
+          },
+          {
+            "appointment_id": 46350,
+            "appointment_date": "2024-09-13",
+            "appointment_time": "12:45:00",
+            "status": "Completed",
+            "reason": "Lab results review"
+          },
+          {
+            "appointment_id": 46433,
+            "appointment_date": "2024-10-31",
+            "appointment_time": "07:30:00",
+            "status": "Cancelled",
+            "reason": "Referral consultation"
+          },
+          {
+            "appointment_id": 46923,
+            "appointment_date": "2022-07-11",
+            "appointment_time": "11:45:00",
+            "status": "Cancelled",
+            "reason": "Neurological assessment"
+          },
+          {
+            "appointment_id": 47209,
+            "appointment_date": "2022-09-25",
+            "appointment_time": "16:00:00",
+            "status": "Cancelled",
+            "reason": "Orthopedic consultation"
+          },
+          {
+            "appointment_id": 47262,
+            "appointment_date": "2024-05-12",
+            "appointment_time": "19:00:00",
+            "status": "Completed",
+            "reason": "Pre-operative assessment"
+          },
+          {
+            "appointment_id": 47768,
+            "appointment_date": "2022-02-16",
+            "appointment_time": "10:15:00",
+            "status": "Completed",
+            "reason": "Annual physical"
+          },
+          {
+            "appointment_id": 47849,
+            "appointment_date": "2024-06-25",
+            "appointment_time": "09:15:00",
+            "status": "Completed",
+            "reason": "Breathing difficulty"
+          }
+        ],
+        "row_count": 500,
+        "message": "Returned 500 row(s)."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "result_interpreter_attempt_1",
+      "latency_ms": 955.71,
+      "input": null,
+      "output": {
+        "summary": "Dr. Renuka has a total of 500 appointments, with 25 shown here, including various reasons such as cardiac evaluation, vaccination, and mental health consultation, and statuses like Completed, No-Show, and Cancelled, with appointment dates ranging from 2022 to 2024. The data shows a mix of completed and missed appointments, with 23 out of the 25 shown appointments having a status of Completed, No-Show, or Cancelled. The reasons for the appointments are diverse, with examples including cardiac evaluation, vaccination, and orthopedic consultation.",
+        "chart_type": "bar",
+        "anomalies": [
+          "inconsistent status updates",
+          "missing appointment outcomes"
+        ]
+      },
+      "tokens": null,
+      "error": null
+    }
+  ]
+}

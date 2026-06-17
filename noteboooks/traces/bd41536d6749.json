@@ -1,0 +1,127 @@
+{
+  "query_id": "bd41536d6749",
+  "question": "Which doctors have the highest no-show rates?",
+  "started_at": 1781709103.062902,
+  "total_latency_ms": 8160.99,
+  "steps": [
+    {
+      "agent": "intent_router_attempt_1",
+      "latency_ms": 486.0,
+      "input": null,
+      "output": {
+        "question": "Which doctors have the highest no-show rates?",
+        "intent": "comparison",
+        "reasoning": "The question compares groups of doctors to find the ones with the highest no-show rates."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "sql_generator_attempt_1",
+      "latency_ms": 6656.76,
+      "input": null,
+      "output": {
+        "success": true,
+        "sql": "SELECT \n    d.doctor_id,\n    d.first_name,\n    d.last_name,\n    COUNT(CASE WHEN a.status = 'No-Show' THEN 1 END) AS no_show_count,\n    COUNT(a.appointment_id) AS total_appointments,\n    ROUND(COUNT(CASE WHEN a.status = 'No-Show' THEN 1 END) * 100.0 / COUNT(a.appointment_id), 2) AS no_show_rate\nFROM \n    doctors d\nJOIN \n    appointments a ON d.doctor_id = a.doctor_id\nGROUP BY \n    d.doctor_id, d.first_name, d.last_name\nORDER BY \n    no_show_rate DESC\nLIMIT 10;",
+        "rows": [
+          {
+            "doctor_id": 329,
+            "first_name": "Yasith",
+            "last_name": "Jayawardena",
+            "no_show_count": 55,
+            "total_appointments": 375,
+            "no_show_rate": "14.67"
+          },
+          {
+            "doctor_id": 65,
+            "first_name": "Nadeeka",
+            "last_name": "Zoysa",
+            "no_show_count": 57,
+            "total_appointments": 404,
+            "no_show_rate": "14.11"
+          },
+          {
+            "doctor_id": 261,
+            "first_name": "Hashini",
+            "last_name": "Fernando",
+            "no_show_count": 57,
+            "total_appointments": 407,
+            "no_show_rate": "14.00"
+          },
+          {
+            "doctor_id": 32,
+            "first_name": "Vishmi",
+            "last_name": "Abeykoon",
+            "no_show_count": 51,
+            "total_appointments": 374,
+            "no_show_rate": "13.64"
+          },
+          {
+            "doctor_id": 6,
+            "first_name": "Upul",
+            "last_name": "Gamage",
+            "no_show_count": 54,
+            "total_appointments": 397,
+            "no_show_rate": "13.60"
+          },
+          {
+            "doctor_id": 137,
+            "first_name": "Yashodha",
+            "last_name": "Gamage",
+            "no_show_count": 52,
+            "total_appointments": 388,
+            "no_show_rate": "13.40"
+          },
+          {
+            "doctor_id": 376,
+            "first_name": "Chathurika",
+            "last_name": "Jayasuriya",
+            "no_show_count": 49,
+            "total_appointments": 367,
+            "no_show_rate": "13.35"
+          },
+          {
+            "doctor_id": 451,
+            "first_name": "Omaya",
+            "last_name": "Sirisena",
+            "no_show_count": 52,
+            "total_appointments": 390,
+            "no_show_rate": "13.33"
+          },
+          {
+            "doctor_id": 16,
+            "first_name": "Isuran",
+            "last_name": "Samaraweera",
+            "no_show_count": 53,
+            "total_appointments": 401,
+            "no_show_rate": "13.22"
+          },
+          {
+            "doctor_id": 195,
+            "first_name": "Manuja",
+            "last_name": "Wanigasekara",
+            "no_show_count": 52,
+            "total_appointments": 397,
+            "no_show_rate": "13.10"
+          }
+        ],
+        "row_count": 10,
+        "message": "Returned 10 row(s)."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "result_interpreter_attempt_1",
+      "latency_ms": 1018.23,
+      "input": null,
+      "output": {
+        "summary": "The top 10 doctors with the highest no-show rates have rates ranging from 13.10% to 14.67%, with Yasith Jayawardena having the highest rate at 14.67% and 55 no-shows out of 375 total appointments. The total no-show counts for these doctors range from 49 to 57, with Nadeeka Zoysa and Hashini Fernando both having 57 no-shows. These high no-show rates may indicate issues with patient engagement or scheduling processes.",
+        "chart_type": "bar",
+        "anomalies": []
+      },
+      "tokens": null,
+      "error": null
+    }
+  ]
+}
