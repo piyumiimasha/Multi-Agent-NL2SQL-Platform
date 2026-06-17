@@ -50,7 +50,7 @@ class DashboardQueryRunner:
         SELECT
             DATE_TRUNC('month', b.invoice_date) AS month,
             SUM(b.total_amount)                 AS total_revenue,
-            COUNT(b.billing_id)                 AS invoice_count
+            COUNT(b.invoice_id)                 AS invoice_count
         FROM billing_invoices b
         WHERE b.invoice_date BETWEEN '{start_date}' AND '{end_date}'
         GROUP BY DATE_TRUNC('month', b.invoice_date)
@@ -62,12 +62,12 @@ class DashboardQueryRunner:
     def top_diagnoses(self, limit: int = 15) -> PanelData:
         sql = f"""
         SELECT
-            d.diagnosis_name,
-            d.diagnosis_category,
+            d.diagnosis_code,
+            d.diagnosis_description,
             COUNT(a.admission_id) AS total_cases
         FROM diagnoses d
-        JOIN admissions a ON d.diagnosis_id = a.diagnosis_id
-        GROUP BY d.diagnosis_name, d.diagnosis_category
+        JOIN admissions a ON d.admission_id = a.admission_id
+        GROUP BY d.diagnosis_code, d.diagnosis_description
         ORDER BY total_cases DESC
         LIMIT {limit};
         """
@@ -78,7 +78,7 @@ class DashboardQueryRunner:
         sql = """
         SELECT
             CONCAT(d.first_name, ' ', d.last_name) AS doctor_name,
-            s.specialization_name                  AS specialization,
+            s.specialty_name                      AS specialization,
             COUNT(a.appointment_id)                AS total_appointments,
             COUNT(CASE WHEN a.status = 'No-Show'
                        THEN a.appointment_id END)  AS no_shows,
@@ -90,7 +90,7 @@ class DashboardQueryRunner:
         FROM doctors d
         JOIN appointments a       ON d.doctor_id = a.doctor_id
         JOIN specialties s        ON d.specialty_id = s.specialty_id
-        GROUP BY d.doctor_id, d.first_name, d.last_name, s.specialization_name
+        GROUP BY d.doctor_id, d.first_name, d.last_name, s.specialty_name
         ORDER BY total_appointments DESC;
         """
         return self._run(sql)
@@ -100,10 +100,10 @@ class DashboardQueryRunner:
         sql = """
         SELECT
             b.payment_method,
-            COUNT(b.billing_id)   AS transaction_count,
-            SUM(b.total_amount)   AS total_revenue,
-            ROUND(AVG(b.total_amount), 2) AS avg_invoice
-        FROM billing_invoices b
+            COUNT(b.payment_id)   AS transaction_count,
+            SUM(b.amount)         AS total_revenue,
+            ROUND(AVG(b.amount), 2) AS avg_invoice
+        FROM Payments b
         WHERE b.payment_method IS NOT NULL
         GROUP BY b.payment_method
         ORDER BY total_revenue DESC;
@@ -115,7 +115,7 @@ class DashboardQueryRunner:
         sql = """
         SELECT
             dep.department_name,
-            COUNT(b.billing_id)          AS invoice_count,
+            COUNT(b.invoice_id)          AS invoice_count,
             SUM(b.total_amount)          AS total_revenue,
             ROUND(AVG(b.total_amount),2) AS avg_bill
         FROM billing_invoices b

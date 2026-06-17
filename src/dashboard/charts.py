@@ -30,14 +30,14 @@ def top_diagnoses_chart(rows: list[dict], top_n: int = 15) -> Figure:
     fig = px.bar(
         df,
         x="total_cases",
-        y="diagnosis_name",
-        color="diagnosis_category",
+        y="diagnosis_code",
+        color="diagnosis_description",
         orientation="h",
         title=f"Top {top_n} Diagnoses",
         labels={
             "total_cases": "Number of Cases",
-            "diagnosis_name": "Diagnosis",
-            "diagnosis_category": "Category",
+            "diagnosis_code": "Diagnosis Code",
+            "diagnosis_description": "Description",
         },
         text="total_cases",
     )

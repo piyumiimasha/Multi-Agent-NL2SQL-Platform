@@ -3,8 +3,17 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-# Make sure src/ is on the path when running from project root
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "src"))
+# src/dashboard/app.py
+# parents[0] = src/dashboard
+# parents[1] = src          <-- add this so `nl2sql` package is findable
+# parents[2] = project root <-- .env lives here
+_SRC_DIR = Path(__file__).resolve().parents[1]   # → .../src
+_ROOT_DIR = Path(__file__).resolve().parents[2]  # → .../Multi-Agent-NL2SQL-Platform
+
+if str(_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(_SRC_DIR))
+
+ENV_PATH = _ROOT_DIR / ".env"
 
 import streamlit as st
 
@@ -17,8 +26,8 @@ from nl2sql.validation import SQLValidationGatekeeper
 from agents.intent_router import IntentRouterAgent
 from agents.result_interpreter import ResultInterpreterAgent
 from agents.sql_generator import SQLGeneratorAgent
-from orchestrator import Orchestrator
-from tracing import AgentTracer
+from orchestrator.orchestrator import Orchestrator
+from tracing.tracing import AgentTracer
 
 from dashboard.charts import (
     adhoc_chart,
@@ -39,7 +48,6 @@ st.set_page_config(
     layout="wide",
 )
 
-ENV_PATH = Path(__file__).resolve().parents[3] / ".env"
 
 
 # ── Cached resource init (runs once per session) ───────────────────────────────
