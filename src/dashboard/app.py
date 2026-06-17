@@ -83,7 +83,7 @@ page = st.sidebar.radio(
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 1 — Ad-hoc NL Query (3a + 3c)
+# PAGE 1 — Ad-hoc NL Query 
 # ══════════════════════════════════════════════════════════════════════════════
 if page == "💬 Ask a Question":
     st.title("💬 Ask the Hospital Database")
@@ -147,7 +147,7 @@ if page == "💬 Ask a Question":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 2 — Revenue Trend (3b panel 1)
+# PAGE 2 — Revenue Trend 
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "📈 Revenue Trend":
     st.title("📈 Revenue Trend")
@@ -194,7 +194,7 @@ elif page == "📈 Revenue Trend":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 3 — Top Diagnoses (3b panel 2)
+# PAGE 3 — Top Diagnoses 
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "🩺 Top Diagnoses":
     st.title("🩺 Top Diagnoses")
@@ -230,7 +230,7 @@ elif page == "🩺 Top Diagnoses":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 4 — Doctor Load (3b panel 3)
+# PAGE 4 — Doctor Load 
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "👨‍⚕️ Doctor Load":
     st.title("👨‍⚕️ Doctor Workload")
@@ -270,7 +270,7 @@ elif page == "👨‍⚕️ Doctor Load":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 5 — Payment Methods (3b panel 4)
+# PAGE 5 — Payment Methods 
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "💳 Payment Methods":
     st.title("💳 Payment Methods")
@@ -321,7 +321,7 @@ elif page == "💳 Payment Methods":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 6 — Department Revenue (3a panel 5 — 5th panel requirement)
+# PAGE 6 — Department Revenue 
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "🏢 Department Revenue":
     st.title("🏢 Department Revenue Breakdown")
