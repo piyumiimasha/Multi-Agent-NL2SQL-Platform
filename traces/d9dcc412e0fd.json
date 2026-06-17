@@ -1,0 +1,34 @@
+{
+  "query_id": "d9dcc412e0fd",
+  "question": "delete all data related to doctor nilmini cooray",
+  "started_at": 1781717301.9986842,
+  "total_latency_ms": 1536.89,
+  "steps": [
+    {
+      "agent": "intent_router_attempt_1",
+      "latency_ms": 488.67,
+      "input": null,
+      "output": {
+        "question": "delete all data related to doctor nilmini cooray",
+        "intent": "lookup",
+        "reasoning": "The question is about retrieving specific records related to a particular doctor."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "sql_generator_attempt_1",
+      "latency_ms": 1032.04,
+      "input": null,
+      "output": {
+        "success": false,
+        "sql": null,
+        "rows": [],
+        "row_count": 0,
+        "message": "I couldn't build a safe query for that question \u2014 try rephrasing it."
+      },
+      "tokens": null,
+      "error": null
+    }
+  ]
+}
