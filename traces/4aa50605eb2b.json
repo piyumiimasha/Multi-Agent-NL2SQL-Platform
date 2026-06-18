@@ -1,0 +1,46 @@
+{
+  "query_id": "4aa50605eb2b",
+  "question": "Show all nurses working night shifts",
+  "started_at": 1781751462.4064078,
+  "total_latency_ms": 4686.41,
+  "steps": [
+    {
+      "agent": "intent_router_attempt_1",
+      "latency_ms": 676.47,
+      "input": null,
+      "output": {
+        "question": "Show all nurses working night shifts",
+        "intent": "lookup",
+        "reasoning": "The question is asking to retrieve specific records of nurses working night shifts."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "sql_generator_attempt_1",
+      "latency_ms": 3627.28,
+      "input": null,
+      "output": {
+        "success": false,
+        "sql": "SELECT s.first_name, s.last_name \nFROM staff s \nWHERE s.role = 'Nurse' AND EXTRACT(HOUR FROM s.hire_date) >= 18;",
+        "rows": [],
+        "row_count": 0,
+        "message": "Query execution failed: FeatureNotSupported"
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "result_interpreter_attempt_1",
+      "latency_ms": 382.67,
+      "input": null,
+      "output": {
+        "summary": "The hospital database does not store information about staff schedules or shift timings, so we cannot determine which nurses work night shifts. However, we can provide information about the total number of nurses or their roles.",
+        "chart_type": "none",
+        "anomalies": []
+      },
+      "tokens": null,
+      "error": null
+    }
+  ]
+}

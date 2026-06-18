@@ -1,0 +1,46 @@
+{
+  "query_id": "973225e1cfb7",
+  "question": "Show appointments for Dr. House",
+  "started_at": 1781752505.006624,
+  "total_latency_ms": 5054.16,
+  "steps": [
+    {
+      "agent": "intent_router_attempt_1",
+      "latency_ms": 545.54,
+      "input": null,
+      "output": {
+        "question": "Show appointments for Dr. House",
+        "intent": "lookup",
+        "reasoning": "The question is asking for specific records related to Dr. House's appointments."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "sql_generator_attempt_1",
+      "latency_ms": 4008.94,
+      "input": null,
+      "output": {
+        "success": true,
+        "sql": "SELECT a.appointment_id, a.appointment_date, a.appointment_time, a.status, a.reason \nFROM appointments a \nJOIN doctors d ON a.doctor_id = d.doctor_id \nWHERE d.first_name = 'Gregory' AND d.last_name = 'House';",
+        "rows": [],
+        "row_count": 0,
+        "message": "Returned 0 row(s)."
+      },
+      "tokens": null,
+      "error": null
+    },
+    {
+      "agent": "result_interpreter_attempt_1",
+      "latency_ms": 499.68,
+      "input": null,
+      "output": {
+        "summary": "No matching records found for Dr. Gregory House, suggesting that Dr. House may not be a registered doctor in the hospital's system or does not have any scheduled appointments. This could be due to the doctor not being employed by the hospital or the name being misspelled.",
+        "chart_type": "none",
+        "anomalies": []
+      },
+      "tokens": null,
+      "error": null
+    }
+  ]
+}

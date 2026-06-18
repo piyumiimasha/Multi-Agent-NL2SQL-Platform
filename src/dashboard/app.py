@@ -3,18 +3,18 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-# src/dashboard/app.py
-# parents[0] = src/dashboard
-# parents[1] = src          <-- add this so `nl2sql` package is findable
-# parents[2] = project root <-- .env lives here
-_SRC_DIR = Path(__file__).resolve().parents[1]   # → .../src
-_ROOT_DIR = Path(__file__).resolve().parents[2]  # → .../Multi-Agent-NL2SQL-Platform
+_SRC_DIR = Path(__file__).resolve().parents[1]
+_ROOT_DIR = Path(__file__).resolve().parents[2]
 
 if str(_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR))
 
 ENV_PATH = _ROOT_DIR / ".env"
 
+import datetime
+
+import plotly.express as px
+import pandas as pd
 import streamlit as st
 
 from nl2sql.engine import NL2SQLPromptComposer
@@ -49,77 +49,98 @@ st.set_page_config(
 )
 
 
-
-# ── Cached resource init (runs once per session) ───────────────────────────────
+# ── Cached resource init ───────────────────────────────────────────────────────
 @st.cache_resource
 def get_resources():
-    llm = GroqLLMClient(env_path=ENV_PATH)
-    composer = NL2SQLPromptComposer.from_env(ENV_PATH)
-    validator = SQLValidationGatekeeper.from_env(ENV_PATH)
-    executor = SQLQueryExecutor.from_env(ENV_PATH)
-    engine = NL2SQLEngine(composer, llm, validator, max_retries=3)
+    try:
+        llm = GroqLLMClient(env_path=ENV_PATH)
+        composer = NL2SQLPromptComposer.from_env(ENV_PATH)
+        validator = SQLValidationGatekeeper.from_env(ENV_PATH)
+        executor = SQLQueryExecutor.from_env(ENV_PATH)
+        engine = NL2SQLEngine(composer, llm, validator, max_retries=3)
 
-    router = IntentRouterAgent(llm)
-    sql_agent = SQLGeneratorAgent(engine, executor)
-    interpreter = ResultInterpreterAgent(llm)
-    orchestrator = Orchestrator(router, sql_agent, interpreter, tracer=AgentTracer("traces"))
+        router = IntentRouterAgent(llm)
+        sql_agent = SQLGeneratorAgent(engine, executor)
+        interpreter = ResultInterpreterAgent(llm)
+        orchestrator = Orchestrator(
+            router, sql_agent, interpreter, tracer=AgentTracer("traces")
+        )
 
-    db = DashboardQueryRunner.from_env(ENV_PATH)
-    insight_gen = InsightGenerator(llm)
+        db = DashboardQueryRunner.from_env(ENV_PATH)
+        insight_gen = InsightGenerator(llm)
 
-    return orchestrator, db, insight_gen
+        return orchestrator, db, insight_gen, None
+
+    except Exception as exc:
+        return None, None, None, str(exc)
 
 
-orchestrator, db, insight_gen = get_resources()
+orchestrator, db, insight_gen, init_error = get_resources()
+
+if init_error:
+    st.error(f"⚠️ Could not connect to the database: {init_error}")
+    st.info("Check your `.env` file and database connection, then refresh the page.")
+    st.stop()
 
 
 # ── Sidebar navigation ─────────────────────────────────────────────────────────
 st.sidebar.title("🏥 MediCore Analytics")
 page = st.sidebar.radio(
     "Navigate",
-    ["💬 Ask a Question", "📈 Revenue Trend", "🩺 Top Diagnoses",
-     "👨‍⚕️ Doctor Load", "💳 Payment Methods", "🏢 Department Revenue"],
+    [
+        "💬 Ask a Question",
+        "📈 Revenue Trend",
+        "🩺 Top Diagnoses",
+        "👨‍⚕️ Doctor Load",
+        "💳 Payment Methods",
+        "🏢 Department Revenue",
+    ],
 )
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 1 — Ad-hoc NL Query 
+# PAGE 1 — Ad-hoc NL Query
 # ══════════════════════════════════════════════════════════════════════════════
 if page == "💬 Ask a Question":
     st.title("💬 Ask the Hospital Database")
-    st.caption("Type a plain-English question — the system generates SQL, runs it, and charts the result.")
+    st.caption(
+        "Type a plain-English question — the system generates SQL, runs it, and charts the result."
+    )
 
-    # Maintain conversation history for multi-turn
     if "history" not in st.session_state:
         st.session_state.history = []
     if "last_result" not in st.session_state:
         st.session_state.last_result = None
 
-    question = st.text_input("Your question", placeholder="e.g. Which departments had the highest revenue last quarter?")
+    question = st.text_input(
+        "Your question",
+        placeholder="e.g. Which departments had the highest revenue last quarter?",
+    )
 
     if st.button("Run", type="primary") and question.strip():
         with st.spinner("Thinking..."):
-            result = orchestrator.run(question, conversation_history=st.session_state.history)
+            result = orchestrator.run(
+                question, conversation_history=st.session_state.history
+            )
 
         st.session_state.history.append(question)
         st.session_state.last_result = result
 
-        if result.status == "success":
-            # Intent badge
-            st.success(f"✅ Intent: **{result.intent.value if result.intent else 'unknown'}**")
+        if result.status == "success" and result.rows:
+            # ── Happy path: data returned ──────────────────────────────
+            st.success(
+                f"✅ Intent: **{result.intent.value if result.intent else 'unknown'}**"
+            )
 
-            # SQL expander
             with st.expander("🔍 Generated SQL"):
                 st.code(result.sql, language="sql")
 
-            # Chart
             fig = adhoc_chart(result.rows, result.chart_type, title=question)
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.dataframe(result.rows, use_container_width=True)
 
-            # NL Insight (3c)
             st.markdown("### 💡 Insight")
             with st.spinner("Generating insight..."):
                 insight = insight_gen.generate(
@@ -129,16 +150,31 @@ if page == "💬 Ask a Question":
                 )
             st.info(insight)
 
-            # Raw data toggle
-            with st.expander(f"📋 Raw data ({result.rows.__len__()} rows)"):
+            with st.expander(f"📋 Raw data ({len(result.rows)} rows)"):
                 st.dataframe(result.rows, use_container_width=True)
 
-        elif result.status == "error":
-            st.warning(f"⚠️ {result.summary}")
-        else:
-            st.error(f"❌ {result.summary}")
+        elif result.status == "success" and not result.rows:
+            # ── Valid SQL, zero rows returned ──────────────────────────
+            with st.expander("🔍 Generated SQL"):
+                st.code(result.sql, language="sql")
 
-    # Conversation history sidebar
+            # Interpreter's summary explains WHY no rows came back
+            st.warning(f"🔍 {result.summary}")
+            st.caption("Try adjusting your filters or rephrasing the question.")
+
+        else:
+            # ── Error / schema missing / clarification needed ──────────
+            # result.summary is the LLM-generated friendly message
+            st.warning(f"💬 {result.summary}")
+
+            if result.sql:
+                with st.expander("🔍 SQL that was attempted"):
+                    st.code(result.sql, language="sql")
+
+            st.caption(
+                "Try rephrasing, or ask about appointments, revenue, diagnoses, or doctor workload."
+            )
+
     if st.session_state.history:
         st.sidebar.markdown("---")
         st.sidebar.markdown("**Recent questions**")
@@ -147,7 +183,7 @@ if page == "💬 Ask a Question":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 2 — Revenue Trend 
+# PAGE 2 — Revenue Trend
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "📈 Revenue Trend":
     st.title("📈 Revenue Trend")
@@ -158,7 +194,6 @@ elif page == "📈 Revenue Trend":
     with col2:
         end = st.date_input("End date", value=None)
 
-    import datetime
     start_str = str(start) if start else "2020-01-01"
     end_str = str(end) if end else str(datetime.date.today())
 
@@ -166,7 +201,7 @@ elif page == "📈 Revenue Trend":
         data = db.revenue_trend(start_str, end_str)
 
     if data.error:
-        st.error(data.error)
+        st.error(f"⚠️ {data.error}")
     elif not data.rows:
         st.warning("No revenue data found for the selected period.")
     else:
@@ -194,7 +229,7 @@ elif page == "📈 Revenue Trend":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 3 — Top Diagnoses 
+# PAGE 3 — Top Diagnoses
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "🩺 Top Diagnoses":
     st.title("🩺 Top Diagnoses")
@@ -205,7 +240,7 @@ elif page == "🩺 Top Diagnoses":
         data = db.top_diagnoses(limit=top_n)
 
     if data.error:
-        st.error(data.error)
+        st.error(f"⚠️ {data.error}")
     elif not data.rows:
         st.warning("No diagnosis data found.")
     else:
@@ -215,12 +250,16 @@ elif page == "🩺 Top Diagnoses":
 
         st.plotly_chart(top_diagnoses_chart(data.rows, top_n), use_container_width=True)
 
-        # Drill-down: click a category to filter
         st.markdown("### 🔎 Drill-down by Category")
-        categories = sorted({r["diagnosis_category"] for r in data.rows if r.get("diagnosis_category")})
+        categories = sorted(
+            {r["diagnosis_category"] for r in data.rows if r.get("diagnosis_category")}
+        )
         selected = st.selectbox("Filter by category", ["All"] + categories)
-        filtered = data.rows if selected == "All" else [r for r in data.rows if r["diagnosis_category"] == selected]
-
+        filtered = (
+            data.rows
+            if selected == "All"
+            else [r for r in data.rows if r["diagnosis_category"] == selected]
+        )
         st.dataframe(filtered, use_container_width=True)
 
         st.markdown("### 💡 Insight")
@@ -230,124 +269,3 @@ elif page == "🩺 Top Diagnoses":
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 4 — Doctor Load 
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "👨‍⚕️ Doctor Load":
-    st.title("👨‍⚕️ Doctor Workload")
-
-    with st.spinner("Loading..."):
-        data = db.doctor_load()
-
-    if data.error:
-        st.error(data.error)
-    elif not data.rows:
-        st.warning("No appointment data found.")
-    else:
-        appts = [int(r["total_appointments"]) for r in data.rows]
-        avg = sum(appts) / len(appts)
-        overloaded = [r for r in data.rows if int(r["total_appointments"]) > avg * 1.3]
-        underloaded = [r for r in data.rows if int(r["total_appointments"]) < avg * 0.7]
-
-        m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Total Doctors", len(data.rows))
-        m2.metric("Avg Appointments", f"{avg:.0f}")
-        m3.metric("Overloaded (>130% avg)", len(overloaded))
-        m4.metric("Underloaded (<70% avg)", len(underloaded))
-
-        st.plotly_chart(doctor_load_chart(data.rows), use_container_width=True)
-
-        if overloaded:
-            st.warning(f"⚠️ **{len(overloaded)} overloaded doctors:** " +
-                       ", ".join(r["doctor_name"] for r in overloaded))
-
-        st.markdown("### 💡 Insight")
-        with st.spinner("Generating insight..."):
-            insight = insight_gen.generate("Doctor Workload", data.rows)
-        st.info(insight)
-
-        with st.expander("📋 Full doctor table"):
-            st.dataframe(data.rows, use_container_width=True)
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PAGE 5 — Payment Methods 
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "💳 Payment Methods":
-    st.title("💳 Payment Methods")
-
-    with st.spinner("Loading..."):
-        data = db.payment_methods()
-
-    if data.error:
-        st.error(data.error)
-    elif not data.rows:
-        st.warning("No payment data found.")
-    else:
-        total_rev = sum(float(r["total_revenue"]) for r in data.rows)
-        top_method = data.rows[0]
-
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Payment Methods", len(data.rows))
-        m2.metric("Total Revenue", f"LKR {total_rev:,.0f}")
-        m3.metric("Top Method", top_method["payment_method"])
-
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.plotly_chart(payment_methods_chart(data.rows), use_container_width=True)
-        with col2:
-            import plotly.express as px
-            import pandas as pd
-            df = pd.DataFrame(data.rows)
-            df["total_revenue"] = df["total_revenue"].astype(float)
-            fig2 = px.bar(
-                df,
-                x="payment_method",
-                y="transaction_count",
-                title="Transactions by Payment Method",
-                labels={"payment_method": "Method", "transaction_count": "Transactions"},
-                color="payment_method",
-                text="transaction_count",
-            )
-            fig2.update_traces(textposition="outside")
-            st.plotly_chart(fig2, use_container_width=True)
-
-        st.markdown("### 💡 Insight")
-        with st.spinner("Generating insight..."):
-            insight = insight_gen.generate("Payment Methods", data.rows)
-        st.info(insight)
-
-        with st.expander("📋 Raw data"):
-            st.dataframe(data.rows, use_container_width=True)
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PAGE 6 — Department Revenue 
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "🏢 Department Revenue":
-    st.title("🏢 Department Revenue Breakdown")
-
-    with st.spinner("Loading..."):
-        data = db.department_revenue()
-
-    if data.error:
-        st.error(data.error)
-    elif not data.rows:
-        st.warning("No department data found.")
-    else:
-        total = sum(float(r["total_revenue"]) for r in data.rows)
-        top_dept = data.rows[0]
-
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Departments", len(data.rows))
-        m2.metric("Total Revenue", f"LKR {total:,.0f}")
-        m3.metric("Top Department", top_dept["department_name"])
-
-        st.plotly_chart(department_revenue_chart(data.rows), use_container_width=True)
-
-        st.markdown("### 💡 Insight")
-        with st.spinner("Generating insight..."):
-            insight = insight_gen.generate("Department Revenue", data.rows)
-        st.info(insight)
-
-        with st.expander("📋 Full breakdown"):
-            st.dataframe(data.rows, use_container_width=True)

@@ -47,7 +47,7 @@ class SQLGeneratorAgent:
         if engine_result.status == EngineStatus.CLARIFICATION_NEEDED:
             return SQLGeneratorOutput(
                 success=False,
-                sql=None,
+                sql=engine_result.sql,
                 rows=[],
                 row_count=0,
                 message=engine_result.message,  # the clarifying question
@@ -56,7 +56,7 @@ class SQLGeneratorAgent:
         # EngineStatus.FAILED (e.g. blocked destructive SQL)
         return SQLGeneratorOutput(
             success=False,
-            sql=None,
+            sql=engine_result.sql,
             rows=[],
             row_count=0,
             message=engine_result.message,
