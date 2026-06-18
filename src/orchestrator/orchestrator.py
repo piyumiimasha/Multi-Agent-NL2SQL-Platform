@@ -62,50 +62,44 @@ class Orchestrator:
             self.tracer.write(query_trace)
             return result
 
-        if not sql_output.success:
-            # Validation/clarification message — not a crash, surface it directly.
-            self.tracer.write(query_trace)
-            return PipelineResult(
-                status="error",
-                question=question,
-                intent=router_output.intent,
-                sql=sql_output.sql,
-                rows=[],
-                summary=sql_output.message,
-                chart_type="none",
-                message=sql_output.message,
-            )
+        # --- Agent 3: Result Interpreter (always called, even on sql failure) ---
+        # Pass the error message through so the LLM generates a friendly response
+        # instead of surfacing raw SQL errors to the user.
+        interp_input = InterpreterInput(
+            question=question,
+            intent=router_output.intent,
+            sql=sql_output.sql,
+            rows=sql_output.rows,
+            error=sql_output.message if not sql_output.success else None,
+        )
 
-        # --- Agent 3: Result Interpreter ---
         interp_output = self._run_with_retry(
             query_trace,
             "result_interpreter",
-            lambda: self.interpreter.run(
-                InterpreterInput(
-                    question=question,
-                    intent=router_output.intent,
-                    sql=sql_output.sql,
-                    rows=sql_output.rows,
-                )
-            ),
+            lambda: self.interpreter.run(interp_input),
         )
+
         if interp_output is None:
-            # Partial success: we have data, just no narrative summary.
+            # Interpreter itself failed — return best-effort response
             self.tracer.write(query_trace)
             return PipelineResult(
-                status="success",
+                status="success" if sql_output.success else "error",
                 question=question,
                 intent=router_output.intent,
                 sql=sql_output.sql,
                 rows=sql_output.rows,
-                summary="Query completed successfully (summary unavailable).",
-                chart_type="table",
-                message="result_interpreter failed after retries; returning raw data.",
+                summary=(
+                    "Query completed successfully (summary unavailable)."
+                    if sql_output.success
+                    else sql_output.message
+                ),
+                chart_type="table" if sql_output.success else "none",
+                message="result_interpreter failed after retries.",
             )
 
         self.tracer.write(query_trace)
         return PipelineResult(
-            status="success",
+            status="success" if sql_output.success else "error",
             question=question,
             intent=router_output.intent,
             sql=sql_output.sql,
@@ -117,7 +111,6 @@ class Orchestrator:
 
     def _run_with_retry(self, query_trace, agent_name: str, fn):
         """Runs an agent step, retrying on exception, recording every attempt in the trace."""
-        last_error: Exception | None = None
         for attempt in range(1, self.agent_max_retries + 1):
             with query_trace.step(f"{agent_name}_attempt_{attempt}") as step:
                 try:
@@ -125,6 +118,5 @@ class Orchestrator:
                     step.record_output(output)
                     return output
                 except Exception as exc:  # noqa: BLE001 - intentional: never crash the pipeline
-                    last_error = exc
                     step.record_output({"error": str(exc)})
         return None

@@ -52,6 +52,7 @@ class InterpreterInput:
     intent: QueryIntent
     sql: str | None
     rows: list[dict[str, object]]
+    error: str | None = None   
 
 
 @dataclass(frozen=True)
