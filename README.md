@@ -1,10 +1,10 @@
-# 🏥 MediCore Analytics — Multi-Agent NL2SQL Platform
+# MediCore Analytics — Multi-Agent NL2SQL Platform
 
 A production-grade, multi-agent Natural Language to SQL (NL2SQL) analytics platform for MediCore Hospital. Hospital staff can ask plain-English questions and receive validated SQL results rendered as dynamic charts — no SQL expertise required.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Architecture](#architecture)
